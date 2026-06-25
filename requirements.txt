@@ -1,0 +1,15 @@
+torch
+torchvision
+torchaudio
+mlconfig
+pandas
+scikit-learn
+swanlab
+flask
+flask-cors
+librosa
+soundfile
+scipy
+pillow
+tqdm
+tabulate

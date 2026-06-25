@@ -1,0 +1,56 @@
+#!/bin/bash
+
+# Load Exp Settings
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+repo_root="${REPO_ROOT:-$(git -C "$script_dir" rev-parse --show-toplevel 2>/dev/null || pwd)}"
+if [ -n "${scripts_path:-}" ]; then
+    case "$scripts_path" in
+        /*) script_dir="$scripts_path" ;;
+        *) script_dir="$repo_root/$scripts_path" ;;
+    esac
+fi
+export PYTHONPATH="$repo_root:${PYTHONPATH:-}"
+cd "$script_dir"
+source exp_setting.sh
+
+
+# Target Models
+declare -a type_arr=(
+    "resnet18"
+    # "resnet50"
+    # "dense121"
+    # "resnet18_augmentation"
+    # "resnet18_denoise"
+    # "resnet18_add-uniform-noise"
+)
+
+# Poison Rates
+declare -a poison_rate_arr=(
+    1.0
+    # 0.8
+    # 0.6
+    # 0.4
+    # 0.2
+    0.0
+)
+
+
+# Submit Jobs
+for model_name in "${type_arr[@]}"
+do
+    for poison_rate in "${poison_rate_arr[@]}"
+    do
+      job_name=${attack_type}-${perturb_type}-$exp_args-${model_name}-${poison_rate}
+      echo $job_name
+      sbatch --partition gpgpu --gres=gpu:1 --time 4:00:00 --job-name $job_name train.slurm $model_name $poison_rate $scripts_path
+    done
+done
+
+
+# Submit Adv Training
+for poison_rate in "${poison_rate_arr[@]}"
+  do
+    job_name=${attack_type}-${perturb_type}-$exp_args-resnet18_madrys-${poison_rate}
+    echo $job_name
+    sbatch --partition gpgpu --gres=gpu:1 --time 8:00:00 --job-name $job_name train.slurm resnet18_madrys $poison_rate $scripts_path
+done

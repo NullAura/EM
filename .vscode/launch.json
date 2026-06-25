@@ -1,0 +1,40 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: Current File",
+      "type": "python",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "SWANLAB_MODE": "offline",
+        "RESNET18_WEIGHTS": "none"
+      }
+    },
+    {
+      "name": "Train: GTZAN Smoke",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/ml/train.py",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "SWANLAB_MODE": "offline",
+        "RESNET18_WEIGHTS": "none",
+        "TRAIN_EPOCHS": "1",
+        "TRAIN_RESIZE": "32",
+        "TRAIN_BATCH_SIZE": "16"
+      }
+    },
+    {
+      "name": "Web: Frontend + API 5001",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/deploy/run_frontend_api_5001.py",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}

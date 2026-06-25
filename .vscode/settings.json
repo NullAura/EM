@@ -1,0 +1,21 @@
+{
+  "python.defaultInterpreterPath": "/root/EM/.venv/bin/python",
+  "python.terminal.activateEnvironment": false,
+  "python.analysis.extraPaths": [
+    "/root/EM",
+    "/root/EM/ml",
+    "/root/EM/backend/api"
+  ],
+  "jupyter.notebookFileRoot": "${workspaceFolder}",
+  "files.exclude": {
+    "**/__pycache__": true,
+    ".venv": true,
+    ".venv-train": true,
+    "data/raw": true,
+    "data/datasets/gtzan/raw": true,
+    "logs": true,
+    "outputs": true,
+    "web/node_modules": true,
+    "swanlog": true
+  }
+}

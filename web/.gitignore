@@ -1,0 +1,3 @@
+node_modules
+web/src/api/temp_files
+web/src/api/__pycache__

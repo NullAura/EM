@@ -1,0 +1,83 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 新增自定义样式 */
+.app-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #000;
+  overflow-x: hidden;
+}
+
+/* 波形动画样式 */
+.waveform-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+/* 按钮样式 */
+.rounded-button {
+  border-radius: 0.5rem;
+}
+
+/* 音频播放器样式 */
+audio {
+  width: 100%;
+  border-radius: 0.5rem;
+  background-color: rgba(124, 58, 237, 0.1);
+}
+
+/* 表单元素样式 */
+input, select {
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+
+/* 上传区域悬停效果 */
+.upload-area:hover {
+  border-color: rgba(124, 58, 237, 0.8);
+  background-color: rgba(124, 58, 237, 0.1);
+}
