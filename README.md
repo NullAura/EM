@@ -27,6 +27,16 @@ Error-Minimizing 方法为训练样本维护样本级扰动。训练过程中交
   -> 重新训练并评估 Clean Accuracy
 ```
 
+## 前端演示
+
+前端提供音频上传、保护类型选择和处理结果下载入口，用于展示音频保护流程。实验结论仍以离线训练与 Clean Accuracy 对比为依据，前端主要承担演示和交互封装。
+
+![前端首页](docs/assets/frontend-home.png)
+
+![音频上传界面](docs/assets/frontend-upload.png)
+
+前端请求统一使用同源 `/api` 路由，部署时由 Flask 服务同时提供静态页面和后端接口，避免固定端口导致的跨域或网络访问问题。
+
 ## 数据与任务
 
 当前训练流程使用 GTZAN 音乐数据集。该数据集包含 10 类音乐风格，项目会将音频转换为 Mel 频谱图，再送入图像分类模型。10 类设置来自 GTZAN 的类别数量，也便于复用原 EM 实验中接近 CIFAR-10 的训练配置。
@@ -69,7 +79,7 @@ EM/
 ├── outputs/                    # 训练输出、临时文件和实验结果
 ├── third_party/                # 第三方实验代码
 ├── deploy/                     # 部署入口
-├── docs/                       # 结构、训练、部署说明
+├── docs/                       # 结构、训练、部署说明与 README 图片资源
 └── archive/legacy-next-demo/   # 归档的旧前端 demo 源码
 ```
 
